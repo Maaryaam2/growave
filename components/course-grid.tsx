@@ -97,7 +97,7 @@ const courses = [
     level: "All Levels",
     gradientFrom: "#1e293b", // شینی تۆخی هێدەر
     gradientTo: "#334155",
-    backgroundImage: "",
+    backgroundImage: "amal.p",
   },
   {
     id: 8,
