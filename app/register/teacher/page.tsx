@@ -52,7 +52,7 @@ export default function TeacherRegisterPage() {
               </h1>
 
               <p className="mb-10 max-w-md text-lg leading-relaxed text-muted-foreground">
-                Become part of GroWave's elite teaching team. We provide the platform, you provide the expertise.
+                Become part of GroWave&apos;s elite teaching team. We provide the platform, you provide the expertise.
               </p>
 
               {/* لیستی سوودەکان */}

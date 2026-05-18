@@ -2,8 +2,9 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
-import { Shield, Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -24,10 +25,12 @@ export function Header() {
           {/* --- Logo Section --- */}
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-20 h-15 overflow-hidden rounded-lg bg-white border border-white/10">
-              <img
-                src="/log.png" 
+              <Image
+                src="/log.png"
                 alt="Logo"
-                className="w-full h-full object-contain"
+                width={120}
+                height={60}
+                className="h-full w-full object-contain p-1"
               />
             </div>
             <div className="flex items-center font-bold text-xl tracking-tighter">

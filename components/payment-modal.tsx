@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, MessageCircle, Smartphone, CreditCard } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -30,14 +30,18 @@ export function PaymentModal({ isOpen, onClose, courseTitle }: PaymentModalProps
   const [expiry, setExpiry] = useState("")
   const [cvv, setCvv] = useState("")
 
-  useEffect(() => {
-    if (!isOpen) return
+  const resetForm = () => {
     setMethod("fib")
     setCardholder("")
     setCardNumber("")
     setExpiry("")
     setCvv("")
-  }, [isOpen])
+  }
+
+  const handleClose = () => {
+    resetForm()
+    onClose()
+  }
 
   const optionBase =
     "flex cursor-pointer flex-col gap-4 rounded-[2.5rem] border-2 p-8 text-left transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
@@ -70,7 +74,7 @@ export function PaymentModal({ isOpen, onClose, courseTitle }: PaymentModalProps
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[998] bg-black/80 backdrop-blur-sm"
-            onClick={onClose}
+            onClick={handleClose}
           />
 
           <motion.div
@@ -82,7 +86,7 @@ export function PaymentModal({ isOpen, onClose, courseTitle }: PaymentModalProps
             <div className="relative shrink-0 border-b border-slate-100 p-8 pb-6">
               <button
                 type="button"
-                onClick={onClose}
+                onClick={handleClose}
                 className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 text-[#1e293b] transition-colors hover:bg-slate-100"
                 aria-label="Close"
               >

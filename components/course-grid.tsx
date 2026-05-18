@@ -97,7 +97,7 @@ const courses = [
     level: "All Levels",
     gradientFrom: "#1e293b", // شینی تۆخی هێدەر
     gradientTo: "#334155",
-    backgroundImage: "amal.p",
+    backgroundImage: "amal.png",
   },
   {
     id: 8,
@@ -239,7 +239,12 @@ export function CourseGrid() {
       </div>
 
       <VideoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} course={selectedCourse} />
-      <PaymentModal isOpen={isPaymentModalOpen} onClose={() => setIsPaymentModalOpen(false)} courseTitle={selectedCourse?.title || ""} />
+      <PaymentModal
+        key={isPaymentModalOpen ? `payment-${selectedCourse?.id ?? "course"}` : "payment-closed"}
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        courseTitle={selectedCourse?.title || ""}
+      />
     </section>
   )
 }

@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { Calendar, Clock, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -18,10 +19,12 @@ export function CourseCard({
       
       {/* بەشی وێنە - Full Quality */}
       <div className="relative h-[300px] w-full overflow-hidden shrink-0 bg-slate-100">
-        <img
-          src={backgroundImage}
+        <Image
+          src={backgroundImage.startsWith("/") ? backgroundImage : `/${backgroundImage}`}
           alt={title}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+          fill
+          sizes="(max-width: 768px) 100vw, 400px"
+          className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
         />
         {/* سێبەری سەر وێنەکە بۆ دیاربوونی نووسینەکان */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1e293b]/90 via-[#1e293b]/20 to-transparent" />
@@ -56,7 +59,8 @@ export function CourseCard({
         {/* وەسفی کۆرسەکە */}
         <div className="mb-6 flex-grow">
           <p className="text-slate-500 text-sm leading-relaxed line-clamp-2 font-medium italic opacity-80">
-            "{description}"
+            <span className="sr-only">Quote: </span>
+            {description}
           </p>
         </div>
 
