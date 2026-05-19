@@ -93,11 +93,11 @@ const courses = [
     category: "Languages",
     days: "Sun, Tue",
     time: "09:00",
-    instructor: "Mr.",
+    instructor: "Ms. Zbida",
     level: "All Levels",
     gradientFrom: "#1e293b", // شینی تۆخی هێدەر
     gradientTo: "#334155",
-    backgroundImage: "",
+    backgroundImage: "zbida.png",
   },
   {
     id: 8,

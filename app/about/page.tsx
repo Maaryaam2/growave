@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion"
 import { Header } from "@/components/header"
-import { Users, Lightbulb, Target, Award, BookOpen, Zap } from "lucide-react"
+import { Lightbulb, Target } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function AboutPage() {
   const containerVariants = {
@@ -26,45 +27,52 @@ export default function AboutPage() {
     },
   }
 
+  // ١. ل ڤێرە سەرۆکێ تیمی ب جودا دانا چونکی دڤێت ل سەرەوە ب تنێ بیت
+  const leaderMember = {
+    name: "Mr. Hshyar Omar Ali",
+    role: "Chief Executive Officer (CEO)",
+    image: "hshyar.png", 
+    bio: "20+ years in education"
+  }
+
+  // ٢. ئەندامێن دی یێن تیمی کو دێ ل بن سەرۆکی دا ل هێڵەکا دیار بن
   const teamMembers = [
     {
-      name: "Mr. Zhardil Hama Karim",
-      role: "Founder & Director",
-      icon: "👨‍💼",
-      bio: "20+ years in education"
-    },
-    {
-      name: "Mr. Hshyar Omar Ali",
-      role: "Lead Instructor",
-      icon: "👨‍💼",
+      name: "Mr. Zhardil Abdulsami Mohamad",
+      role: "Chief Operating Officer (COO)",
+      image: "zhardill.png", 
       bio: "Leader"
     },
     {
-      name: "Ms . Maryam Mohammed Tahir",
+      name: "Ms. Maryam Mohammed Tahir",
       role: "Technology Lead",
-      icon: "👩‍💻",
-      bio: "senior Frotnend developer "
+      image: "maryamm.png", 
+      bio: "Senior Frontend Developer"
     },
     {
-      name: "Haifa",
-      role: "Community Manager",
-      icon: "👨‍🤝‍👨",
+      name: "Ms. Khozik Hameed khalid",
+      role: "Innovation Coordinator",
+      image: "khozik.png", 
+      bio: "Creative & Strategic Thinker"
+    },
+    {
+      name: "Ms. Amal Eido Ismail",
+      role: "Administrative Manager",
+      image: "amall.png", 
       bio: "Student Success Advocate"
     },
   ]
-
-  
 
   return (
     <main className="min-h-screen">
       <Header />
       
       {/* Hero Section */}
-      <section className="relative flex min-h-[80vh] items-center justify-center overflow-hidden px-6 pt-32">
-        <div className="pointer-events-none absolute inset-0 bg-enterprise-radial opacity-70" />
-        <div className="absolute left-10 top-20 h-96 w-96 animate-pulse rounded-full bg-primary/15 blur-3xl" />
+      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-6 pt-32 bg-entreprise-radial bg-cover bg-center">
+        <div className="absolute inset-0 z-0 bg-background/90" />
+        <div className="absolute left-10 top-20 h-96 w-96 animate-pulse rounded-full bg-primary/20 blur-3xl" />
         <div
-          className="absolute bottom-20 right-10 h-96 w-96 animate-pulse rounded-full bg-chart-2/20 blur-3xl"
+          className="absolute bottom-20 right-10 h-[50vh] w-[50vh] animate-pulse rounded-full bg-chart-2/25 blur-3xl"
           style={{ animationDelay: "1s" }}
         />
 
@@ -95,7 +103,8 @@ export default function AboutPage() {
             variants={itemVariants}
             className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-8"
           >
-GrowWave Academy is dedicated to helping students grow through language, knowledge, and practical skills. We create a supportive learning environment that inspires confidence, creativity, and success for a brighter future.          </motion.p>
+            GrowWave Academy is dedicated to helping students grow through language, knowledge, and practical skills. We create a supportive learning environment that inspires confidence, creativity, and success for a brighter future.
+          </motion.p>
 
           <motion.div
             variants={itemVariants}
@@ -115,10 +124,8 @@ GrowWave Academy is dedicated to helping students grow through language, knowled
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="relative py-20 px-6 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
-      >
-
-      </motion.section>
+        className="relative py-20 px-6 bg-gradient-to-b from-transparent via-primary/10 to-transparent"
+      />
 
       {/* Mission & Vision Section */}
       <motion.section
@@ -142,8 +149,8 @@ GrowWave Academy is dedicated to helping students grow through language, knowled
                 <h2 className="text-3xl font-bold text-foreground">Our Mission</h2>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-4">
-At GrowWave Academy, our mission is to transform learners into confident, skilled individuals by delivering high-quality education, practical language training, and lifelong learning opportunities that open the door to a better future.              </p>
-             
+                At GrowWave Academy, our mission is to transform learners into confident, skilled individuals by delivering high-quality education, practical language training, and lifelong learning opportunities that open the door to a better future.
+              </p>
             </motion.div>
 
             {/* Vision Card */}
@@ -158,8 +165,8 @@ At GrowWave Academy, our mission is to transform learners into confident, skille
                 <h2 className="text-3xl font-bold text-foreground">Our Vision</h2>
               </div>
               <p className="text-muted-foreground leading-relaxed mb-4">
-Our vision at GrowWave Academy is to inspire a new generation of learners to unlock their full potential through knowledge, innovation, and practical skills—creating a future where education leads to real growth, real confidence, and real opportunities.              </p>
-              
+                Our vision at GrowWave Academy is to inspire a new generation of learners to unlock their full potential through knowledge, innovation, and practical skills—creating a future where education leads to real growth, real confidence, and real opportunities.
+              </p>
             </motion.div>
           </div>
         </div>
@@ -171,7 +178,7 @@ Our vision at GrowWave Academy is to inspire a new generation of learners to unl
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="relative py-20 px-6 bg-gradient-to-b from-primary/5 to-transparent"
+        className="relative py-20 px-6 bg-gradient-to-b from-primary/10 to-transparent"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div variants={itemVariants} className="text-center mb-16">
@@ -198,7 +205,7 @@ Our vision at GrowWave Academy is to inspire a new generation of learners to unl
               },
               {
                 title: "Quality Education",
-                description: "We provide high-quality online courses designed for real skills and real progress.",
+                description: "We provide high-quality online online courses designed for real skills and real progress.",
                 icon: "💡"
               },
               {
@@ -231,7 +238,7 @@ Our vision at GrowWave Academy is to inspire a new generation of learners to unl
         </div>
       </motion.section>
 
-      {/* Team Section */}
+      {/* Team Section (ئەو بەشێ هاتییە گۆڕین بۆ ڕێکخستنا کارتان) */}
       <motion.section
         variants={containerVariants}
         initial="hidden"
@@ -247,23 +254,61 @@ Our vision at GrowWave Academy is to inspire a new generation of learners to unl
             </p>
           </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group cursor-pointer rounded-xl border border-border bg-card p-6 text-center shadow-sm transition-shadow hover:shadow-md"
-              >
-                <div className="text-6xl mb-4 transform group-hover:scale-125 transition-transform duration-300">{member.icon}</div>
-                <h3 className="text-lg font-bold text-foreground mb-1">{member.name}</h3>
-                <p className="text-sm text-primary font-semibold mb-3">{member.role}</p>
-                <p className="text-xs text-muted-foreground">{member.bio}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="flex flex-col gap-12">
+            {/* 👑 هێڵا ئێکێ: تەنها کارتی سەرۆک (Mr. Hshyar) ب تەنێ ل ناوەڕاستێ */}
+            <motion.div 
+              variants={itemVariants}
+              className="flex justify-center"
+            >
+              <div className="group cursor-pointer rounded-xl border border-border bg-card p-6 text-center shadow-sm transition-shadow hover:shadow-md flex flex-col items-center max-w-sm w-full">
+                <div className="relative h-36 w-36 mb-6 overflow-hidden rounded-full border-4 border-primary/30 shadow-lg transition-transform duration-300 group-hover:scale-110 bg-muted">
+                  <Image
+                    src={leaderMember.image}
+                    alt={leaderMember.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-w-7xl) 100vw"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = `https://api.dicebear.com/7.x/initials/svg?seed=${leaderMember.name}`
+                    }}
+                  />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-1 transition-colors group-hover:text-primary">{leaderMember.name}</h3>
+                <p className="text-sm text-primary font-semibold mb-3">{leaderMember.role}</p>
+                <p className="text-xs text-muted-foreground leading-relaxed px-2">{leaderMember.bio}</p>
+              </div>
+            </motion.div>
+
+            {/* 👥 هێڵا دووێ: ئەندامێن دی یێن تیمی ل بن سەرۆکی دا */}
+            <motion.div 
+              variants={containerVariants}
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="group cursor-pointer rounded-xl border border-border bg-card p-6 text-center shadow-sm transition-shadow hover:shadow-md flex flex-col items-center"
+                >
+                  <div className="relative h-36 w-36 mb-6 overflow-hidden rounded-full border-4 border-primary/30 shadow-lg transition-transform duration-300 group-hover:scale-110 bg-muted">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-w-7xl) 100vw"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `https://api.dicebear.com/7.x/initials/svg?seed=${member.name}`
+                      }}
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-1 transition-colors group-hover:text-primary">{member.name}</h3>
+                  <p className="text-sm text-primary font-semibold mb-3">{member.role}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed px-2">{member.bio}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
@@ -273,7 +318,7 @@ Our vision at GrowWave Academy is to inspire a new generation of learners to unl
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="relative bg-gradient-to-b from-transparent to-primary/5 px-6 py-20"
+        className="relative bg-gradient-to-b from-transparent to-primary/10 px-6 py-20"
       >
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -284,7 +329,7 @@ Our vision at GrowWave Academy is to inspire a new generation of learners to unl
               Ready to Transform Your Learning Journey?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of students already learning with EduVerse and unlock your full potential.
+              Join thousands of students already learning with GrowWave Academy and unlock your full potential.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button size="lg">Start learning today</Button>
@@ -300,7 +345,7 @@ Our vision at GrowWave Academy is to inspire a new generation of learners to unl
       <footer className="py-12 px-6 border-t border-border">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2024 EduVerse. All rights reserved.
+            © 2026 GrowWave Academy. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
