@@ -97,7 +97,7 @@ const courses = [
     level: "All Levels",
     gradientFrom: "#1e293b", // شینی تۆخی هێدەر
     gradientTo: "#334155",
-    backgroundImage: "amal.png",
+    backgroundImage: "",
   },
   {
     id: 8,
@@ -106,11 +106,11 @@ const courses = [
     category: "Tech",
     days: "Sat, Wed",
     time: "09:00",
-    instructor: "Ms. Sipal",
+    instructor: "Mr. Bangeen",
     level: "All Levels",
     gradientFrom: "#10b981",
     gradientTo: "#059669",
-    backgroundImage: "Sepal.png",
+    backgroundImage: "bangeen.png",
   },
   {
     id: 9,
