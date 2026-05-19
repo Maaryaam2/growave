@@ -27,39 +27,37 @@ export default function AboutPage() {
     },
   }
 
-  // ١. ل ڤێرە سەرۆکێ تیمی ب جودا دانا چونکی دڤێت ل سەرەوە ب تنێ بیت
+  // سەرۆکێ تیمی
   const leaderMember = {
     name: "Mr. Hshyar Omar Ali",
     role: "Chief Executive Officer (CEO)",
     image: "hshyar.png", 
-    bio: "20+ years in education"
+   
   }
 
-  // ٢. ئەندامێن دی یێن تیمی کو دێ ل بن سەرۆکی دا ل هێڵەکا دیار بن
+  // ئەندامێن تیمی
   const teamMembers = [
     {
-      name: "Mr. Zhardil Abdulsami Mohamad",
+      name: "Mr. Zhardil Hama Karim",
       role: "Chief Operating Officer (COO)",
       image: "zhardill.png", 
-      bio: "Leader"
+      
     },
     {
       name: "Ms. Maryam Mohammed Tahir",
       role: "Technology Lead",
       image: "maryamm.png", 
-      bio: "Senior Frontend Developer"
+     
     },
     {
       name: "Ms. Khozik Hameed khalid",
       role: "Innovation Coordinator",
       image: "khozik.png", 
-      bio: "Creative & Strategic Thinker"
     },
     {
-      name: "Ms. Amal Eido Ismail",
+      name: "Amal Eido Ismail",
       role: "Administrative Manager",
       image: "amall.png", 
-      bio: "Student Success Advocate"
     },
   ]
 
@@ -118,14 +116,16 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section (ئەڤە ئەو بەشە بوو کو کێشە چێکربوو، نوکا هاتییە ڕێکخستن) */}
       <motion.section
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="relative py-20 px-6 bg-gradient-to-b from-transparent via-primary/10 to-transparent"
-      />
+        className="relative py-10 px-6 bg-gradient-to-b from-transparent via-primary/10 to-transparent"
+      >
+        {/* بەشێ خاڵی یان داتای سەرەتایی ل ڤێرە دبییت داهاتی */}
+      </motion.section>
 
       {/* Mission & Vision Section */}
       <motion.section
@@ -193,36 +193,12 @@ export default function AboutPage() {
             className="grid md:grid-cols-3 gap-6"
           >
             {[
-              {
-                title: "Growth",
-                description: "We believe every student has the power to grow through learning and new experiences.",
-                icon: "⭐"
-              },
-              {
-                title: "Inclusivity",
-                description: "We embrace diversity and ensure every student feels valued and supported.",
-                icon: "🤝"
-              },
-              {
-                title: "Quality Education",
-                description: "We provide high-quality online online courses designed for real skills and real progress.",
-                icon: "💡"
-              },
-              {
-                title: "Empowerment",
-                description: "We help students build confidence, knowledge, and opportunities for the future.",
-                icon: "✅"
-              },
-              {
-                title: "Community",
-                description: "We create a supportive learning environment where everyone feels motivated and connected.",
-                icon: "🌍"
-              },
-              {
-                title: "Lifelong Learning",
-                description: "Learning never stops, and we inspire continuous personal and professional development.",
-                icon: "🚀"
-              },
+              { title: "Growth", description: "We believe every student has the power to grow through learning and new experiences.", icon: "⭐" },
+              { title: "Inclusivity", description: "We embrace diversity and ensure every student feels valued and supported.", icon: "🤝" },
+              { title: "Quality Education", description: "We provide high-quality online online courses designed for real skills and real progress.", icon: "💡" },
+              { title: "Empowerment", description: "We help students build confidence, knowledge, and opportunities for the future.", icon: "✅" },
+              { title: "Community", description: "We create a supportive learning environment where everyone feels motivated and connected.", icon: "🌍" },
+              { title: "Lifelong Learning", description: "Learning never stops, and we inspire continuous personal and professional development.", icon: "🚀" },
             ].map((value, index) => (
               <motion.div
                 key={index}
@@ -238,7 +214,7 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      {/* Team Section (ئەو بەشێ هاتییە گۆڕین بۆ ڕێکخستنا کارتان) */}
+      {/* Team Section */}
       <motion.section
         variants={containerVariants}
         initial="hidden"
@@ -255,13 +231,13 @@ export default function AboutPage() {
           </motion.div>
 
           <div className="flex flex-col gap-12">
-            {/* 👑 هێڵا ئێکێ: تەنها کارتی سەرۆک (Mr. Hshyar) ب تەنێ ل ناوەڕاستێ */}
+            {/* 👑 کارتی سەرۆک (Mr. Hshyar) */}
             <motion.div 
               variants={itemVariants}
-              className="flex justify-center"
+              className="flex justify-center px-4"
             >
               <div className="group cursor-pointer rounded-xl border border-border bg-card p-6 text-center shadow-sm transition-shadow hover:shadow-md flex flex-col items-center max-w-sm w-full">
-                <div className="relative h-36 w-36 mb-6 overflow-hidden rounded-full border-4 border-primary/30 shadow-lg transition-transform duration-300 group-hover:scale-110 bg-muted">
+                <div className="relative h-32 w-32 sm:h-36 sm:w-36 mb-6 overflow-hidden rounded-full border-4 border-primary/30 shadow-lg transition-transform duration-300 group-hover:scale-110 bg-muted">
                   <Image
                     src={leaderMember.image}
                     alt={leaderMember.name}
@@ -273,38 +249,38 @@ export default function AboutPage() {
                     }}
                   />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-1 transition-colors group-hover:text-primary">{leaderMember.name}</h3>
-                <p className="text-sm text-primary font-semibold mb-3">{leaderMember.role}</p>
-                <p className="text-xs text-muted-foreground leading-relaxed px-2">{leaderMember.bio}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1 transition-colors group-hover:text-primary break-words max-w-full">{leaderMember.name}</h3>
+                <p className="text-xs sm:text-sm text-primary font-semibold mb-3">{leaderMember.role}</p>
               </div>
             </motion.div>
 
-            {/* 👥 هێڵا دووێ: ئەندامێن دی یێن تیمی ل بن سەرۆکی دا */}
+            {/* 👥 ئەندامێن تیمی */}
             <motion.div 
               variants={containerVariants}
-              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+              className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
             >
               {teamMembers.map((member, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="group cursor-pointer rounded-xl border border-border bg-card p-6 text-center shadow-sm transition-shadow hover:shadow-md flex flex-col items-center"
+                  className="group cursor-pointer rounded-xl border border-border bg-card p-4 sm:p-6 text-center shadow-sm transition-shadow hover:shadow-md flex flex-col items-center justify-between"
                 >
-                  <div className="relative h-36 w-36 mb-6 overflow-hidden rounded-full border-4 border-primary/30 shadow-lg transition-transform duration-300 group-hover:scale-110 bg-muted">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-w-7xl) 100vw"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://api.dicebear.com/7.x/initials/svg?seed=${member.name}`
-                      }}
-                    />
+                  <div className="flex flex-col items-center w-full">
+                    <div className="relative h-24 w-24 sm:h-36 sm:w-36 mb-4 overflow-hidden rounded-full border-2 sm:border-4 border-primary/30 shadow-md transition-transform duration-300 group-hover:scale-110 bg-muted">
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                        sizes="(max-w-7xl) 100vw"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `https://api.dicebear.com/7.x/initials/svg?seed=${member.name}`
+                        }}
+                      />
+                    </div>
+                    <h3 className="text-sm sm:text-xl font-bold text-foreground mb-1 transition-colors group-hover:text-primary line-clamp-2 min-h-[40px] sm:min-h-0">{member.name}</h3>
+                    <p className="text-[11px] sm:text-sm text-primary font-semibold mb-2 line-clamp-1">{member.role}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-1 transition-colors group-hover:text-primary">{member.name}</h3>
-                  <p className="text-sm text-primary font-semibold mb-3">{member.role}</p>
-                  <p className="text-xs text-muted-foreground leading-relaxed px-2">{member.bio}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -348,15 +324,9 @@ export default function AboutPage() {
             © 2026 GrowWave Academy. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Terms
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Contact
-            </a>
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Privacy</a>
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Terms</a>
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Contact</a>
           </div>
         </div>
       </footer>
