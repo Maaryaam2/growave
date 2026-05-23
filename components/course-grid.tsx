@@ -17,9 +17,17 @@ const courses = [
     time: "11:00",
     instructor: "Ms. Rozan",
     level: "Beginner",
-    gradientFrom: "#1e293b", // شینی تۆخی هێدەر
+    gradientFrom: "#1e293b",
     gradientTo: "#334155",
     backgroundImage: "rozan.png",
+    videoUrl: "/videos/beginner.mov", // 🎥 فایلێ ڤیدیۆیا ل ناو public/videos/
+    learningPoints: [
+      "Basic English words",
+      "Simple conversations",
+      "Reading and writing",
+      "Daily expressions",
+      "Correct pronunciation And Easy grammar basics"
+    ]
   },
   {
     id: 2,
@@ -33,6 +41,14 @@ const courses = [
     gradientFrom: "#1e293b",
     gradientTo: "#334155",
     backgroundImage: "zhardil.png",
+    videoUrl: "videos/tech-intro.mp4",
+    learningPoints: [
+      "Improve speaking confidence",
+      "Better grammar and vocabulary",
+      "Everyday conversations",
+      "Reading and listening skills",
+      "Writing short paragraphs And Clear pronunciation and fluency"
+    ]
   },
   {
     id: 3,
@@ -45,7 +61,15 @@ const courses = [
     level: "Advanced",
     gradientFrom: "#1e293b",
     gradientTo: "#334155",
-    backgroundImage: "/ry2.png",
+    backgroundImage: "/rayan.png",
+    videoUrl: "/videos/advanced.mov",
+    learningPoints: [
+      "Advanced grammar",
+      "Fluent speaking",
+      "Academic vocabulary",
+      "Reading & writing skills",
+      "Professional communication"
+    ]
   },
   {
     id: 4,
@@ -56,9 +80,17 @@ const courses = [
     time: "10:00",
     instructor: "Ms. shahira",
     level: "All Levels",
-    gradientFrom: "#10b981", // سەوزی لۆگۆ
+    gradientFrom: "#10b981",
     gradientTo: "#059669",
     backgroundImage: "arabic.png",
+    videoUrl: "/videos/arabic.mov",
+    learningPoints: [
+      "تطوير مهارات النطق السليم والتحدث بطلاقة",
+      "فهم واستخدام القواعد الأساسية والصياغة الصحيحة",
+      "تعزيز قدرات القراءة السريعة والاستيعاب",
+      "إتقان الكتابة الإنشائية والتعبيرية بوضوح",
+      "إجراء محادثات يومية ومهنية بثقة عالية"
+    ]
   },
   {
     id: 5,
@@ -72,6 +104,14 @@ const courses = [
     gradientFrom: "#1e293b",
     gradientTo: "#334155",
     backgroundImage: "/jwan.png",
+    videoUrl: "/public/IMG_35.mov",
+    learningPoints: [
+      "Günlük temel konuşma kalıplarını öğrenin",
+      "Doğru telaffuz ve tonlama becerileri kazanın",
+      "Giriş ve orta düzey dilbilgisi kurallarına hakim olun",
+      "Karşılıklı diyalogları rahatça sürdürün",
+      "Kelime dağarcığınızı etkili bir şekilde genişletin"
+    ]
   },
   {
     id: 6,
@@ -85,6 +125,14 @@ const courses = [
     gradientFrom: "#1e293b",
     gradientTo: "#334155",
     backgroundImage: "bita.png",
+    videoUrl: "/videos/persian.mov",
+    learningPoints: [
+      "یادگیری الفبا و اصول نگارش زبان فارسی",
+      "تقویت مهارت مکالمه روزمره و کاربردی",
+      "آشنایی با دستور زبان و ساختارهای اصیل",
+      "درک متون ساده و اشعار برجسته فارسی",
+      "توسعه دایره واژگان در موضوعات مختلف"
+    ]
   },
   {
     id: 7,
@@ -95,9 +143,17 @@ const courses = [
     time: "09:00",
     instructor: "Ms. Zbida",
     level: "All Levels",
-    gradientFrom: "#1e293b", // شینی تۆخی هێدەر
+    gradientFrom: "#1e293b",
     gradientTo: "#334155",
     backgroundImage: "zbida.png",
+    videoUrl: "/videos/german.mov",
+    learningPoints: [
+      "Erlernen Sie die Grundlagen der deutschen Grammatik",
+      "Verbessern Sie Ihre Aussprache und Hörverstehen",
+      "Führen Sie einfache Gespräche im Alltag",
+      "Bauen Sie einen nützlichen Grundwortschatz auf",
+      "Schreiben ve verstehen Sie einfache deutsche Texte"
+    ]
   },
   {
     id: 8,
@@ -111,6 +167,15 @@ const courses = [
     gradientFrom: "#10b981",
     gradientTo: "#059669",
     backgroundImage: "bangeen.png",
+    videoUrl: "/videos/computer.mov",
+    learningPoints: [
+      "Programming basics",
+      "Algorithms & problem solving",
+      "Data structures",
+      "Computer systems",
+      "Software development",
+      "Databases & networks"
+    ]
   },
   {
     id: 9,
@@ -123,8 +188,17 @@ const courses = [
     level: "All Levels",
     gradientFrom: "#1e293b",
     gradientTo: "#334155",
-    backgroundImage: "amal.png",
-  },
+    backgroundImage: "murad.png",
+    videoUrl: "/videos/mental-health.mov",
+    learningPoints: [
+      "Understanding emotions and thoughts",
+      "Stress and anxiety management",
+      "Healthy coping skills",
+      "Self-awareness and self-care",
+      "Basics of mental wellbeing",
+      "How to support yourself and others"
+    ]
+  }
 ];
 
 const categories = [
@@ -232,7 +306,6 @@ export function CourseGrid() {
             </AnimatePresence>
           </div>
           
-          {/* Subtle Gradient Fade for Scroll Indicators */}
           <div className="pointer-events-none absolute right-0 top-0 hidden h-full w-16 bg-gradient-to-l from-muted/30 to-transparent md:block" />
           <div className="pointer-events-none absolute left-0 top-0 hidden h-full w-16 bg-gradient-to-r from-muted/30 to-transparent md:block" />
         </div>

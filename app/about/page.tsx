@@ -29,7 +29,7 @@ export default function AboutPage() {
 
   // سەرۆکێ تیمی
   const leaderMember = {
-    name: "Mr. Hshyar Omar Ali",
+    name: "Mr. Hishyar Omar Ali",
     role: "Chief Executive Officer (CEO)",
     image: "hshyar.png", 
    
@@ -46,7 +46,7 @@ export default function AboutPage() {
     {
       name: "Ms. Maryam Mohammed Tahir",
       role: "Technology Lead",
-      image: "maryamm.png", 
+      image: "maryaam.png", 
      
     },
     {
@@ -172,47 +172,7 @@ export default function AboutPage() {
         </div>
       </motion.section>
 
-      {/* Core Values Section */}
-      <motion.section
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="relative py-20 px-6 bg-gradient-to-b from-primary/10 to-transparent"
-      >
-        <div className="max-w-7xl mx-auto">
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="mb-4 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">Our core values</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              These principles guide everything we do and shape our community culture
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            className="grid md:grid-cols-3 gap-6"
-          >
-            {[
-              { title: "Growth", description: "We believe every student has the power to grow through learning and new experiences.", icon: "⭐" },
-              { title: "Inclusivity", description: "We embrace diversity and ensure every student feels valued and supported.", icon: "🤝" },
-              { title: "Quality Education", description: "We provide high-quality online online courses designed for real skills and real progress.", icon: "💡" },
-              { title: "Empowerment", description: "We help students build confidence, knowledge, and opportunities for the future.", icon: "✅" },
-              { title: "Community", description: "We create a supportive learning environment where everyone feels motivated and connected.", icon: "🌍" },
-              { title: "Lifelong Learning", description: "Learning never stops, and we inspire continuous personal and professional development.", icon: "🚀" },
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="rounded-xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
-              >
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-bold text-foreground mb-2">{value.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </motion.section>
+     
 
       {/* Team Section */}
       <motion.section
@@ -287,7 +247,47 @@ export default function AboutPage() {
           </div>
         </div>
       </motion.section>
+ {/* Core Values Section */}
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="relative py-20 px-6 bg-gradient-to-b from-primary/10 to-transparent"
+      >
+        <div className="max-w-7xl mx-auto">
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h2 className="mb-4 text-4xl font-semibold tracking-tight text-foreground md:text-5xl">Our core values</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              These principles guide everything we do and shape our community culture
+            </p>
+          </motion.div>
 
+          <motion.div
+            variants={containerVariants}
+            className="grid md:grid-cols-3 gap-6"
+          >
+            {[
+              { title: "Growth", description: "We believe every student has the power to grow through learning and new experiences.", icon: "⭐" },
+              { title: "Inclusivity", description: "We embrace diversity and ensure every student feels valued and supported.", icon: "🤝" },
+              { title: "Quality Education", description: "We provide high-quality online online courses designed for real skills and real progress.", icon: "💡" },
+              { title: "Empowerment", description: "We help students build confidence, knowledge, and opportunities for the future.", icon: "✅" },
+              { title: "Community", description: "We create a supportive learning environment where everyone feels motivated and connected.", icon: "🌍" },
+              { title: "Lifelong Learning", description: "Learning never stops, and we inspire continuous personal and professional development.", icon: "🚀" },
+            ].map((value, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="rounded-xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md"
+              >
+                <div className="text-4xl mb-4">{value.icon}</div>
+                <h3 className="text-xl font-bold text-foreground mb-2">{value.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
       {/* CTA Section */}
       <motion.section
         variants={containerVariants}

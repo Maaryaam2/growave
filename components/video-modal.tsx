@@ -1,10 +1,11 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Play, Clock, Calendar, CheckCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { X, Clock, Calendar, CheckCircle } from "lucide-react"
 
+// ۱. زێدەکرنا لێستا خاڵان و ڤیدیۆیێ بۆ پێناسا کۆرسی
 interface Course {
+  id: number
   title: string
   description: string
   category: string
@@ -15,6 +16,8 @@ interface Course {
   gradientFrom: string
   gradientTo: string
   backgroundImage: string
+  videoUrl?: string // 🎥 لێنکێ فایلی ڤیدیۆیێ ل ڤێرە دەر دکەوێت
+  learningPoints?: string[]
 }
 
 interface VideoModalProps {
@@ -26,13 +29,21 @@ interface VideoModalProps {
 export function VideoModal({ isOpen, onClose, course }: VideoModalProps) {
   if (!course) return null
 
-  const learningPoints = [
+  // ۲. ئەڤە خاڵێن سەرەکی نە ئەگەر تە د داتایێ کۆرسی دا خاڵ دیار نەکربن
+  const defaultLearningPoints = [
     "Comprehensive curriculum designed by experts",
     "Interactive lessons with practical exercises",
     "Regular assessments and progress tracking",
     "Direct support from your instructor",
     "Certificate upon completion"
   ]
+
+  const pointsToShow = course.learningPoints && course.learningPoints.length > 0 
+    ? course.learningPoints 
+    : defaultLearningPoints
+
+  // پشتڕاستکرنا ناڤێ وێنەی دا کو هەمیشە سەرتۆپێ پۆڵدەری / وەرگریت
+  const imagePath = course.backgroundImage.startsWith('/') ? course.backgroundImage : `/${course.backgroundImage}`
 
   return (
     <AnimatePresence>
@@ -58,70 +69,61 @@ export function VideoModal({ isOpen, onClose, course }: VideoModalProps) {
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center text-card-foreground hover:bg-card transition-colors"
+              className="absolute top-4 right-4 z-50 w-10 h-10 rounded-full bg-card/80 backdrop-blur-sm flex items-center justify-center text-card-foreground hover:bg-card transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
 
             {/* Video Section */}
-            <div 
-              className="lg:w-3/5 h-64 lg:h-auto relative overflow-hidden"
-            >
-              {/* Background Image */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${course.backgroundImage})` }}
-              />
-              
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
-              
-              {/* Gradient Overlay */}
-              <div 
-                className="absolute inset-0 opacity-40 mix-blend-overlay"
-                style={{ background: `linear-gradient(135deg, ${course.gradientFrom}, ${course.gradientTo})` }}
-              />
-              
-              {/* Play Button */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="absolute inset-0 m-auto w-20 h-20 rounded-full flex items-center justify-center shadow-2xl"
-                style={{ background: `linear-gradient(135deg, ${course.gradientFrom}, ${course.gradientTo})` }}
-              >
-                <Play className="w-8 h-8 text-white ml-1" />
-              </motion.button>
-
-              {/* Video Controls Placeholder */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-                <div className="flex items-center gap-4">
-                  <div className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
-                    <div 
-                      className="w-1/3 h-full rounded-full" 
-                      style={{ background: `linear-gradient(90deg, ${course.gradientFrom}, ${course.gradientTo})` }}
-                    />
-                  </div>
-                  <span className="text-sm text-white font-medium">0:00 / 45:00</span>
-                </div>
-              </div>
-
-              {/* Course Title on Video */}
-              <div className="absolute top-6 left-6 right-16">
-                <span 
-                  className="inline-block px-3 py-1 text-xs font-medium rounded-full text-white mb-3"
-                  style={{ background: `linear-gradient(135deg, ${course.gradientFrom}, ${course.gradientTo})` }}
+            <div className="lg:w-3/5 h-64 lg:h-auto relative overflow-hidden bg-black flex items-center justify-center">
+              {course.videoUrl ? (
+                /* 🎥 ئەگەر لێنکێ ڤیدیۆیێ هەبیت دێ ل ڤێرە لۆد بیت */
+                <video
+                  src={course.videoUrl}
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain absolute inset-0 z-10"
+                  poster={imagePath}
                 >
-                  {course.category}
-                </span>
-                <h2 className="text-2xl lg:text-3xl font-bold text-white drop-shadow-lg">
-                  {course.title}
-                </h2>
-              </div>
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                /* ئەگەر ڤیدیۆ نەبوو دێ شێوازێ وێنەیێ جێگیر یێ پێشتر نیشان دەت */
+                <>
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${imagePath})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
+                  <div 
+                    className="absolute inset-0 opacity-40 mix-blend-overlay"
+                    style={{ background: `linear-gradient(135deg, ${course.gradientFrom}, ${course.gradientTo})` }}
+                  />
+                </>
+              )}
+
+              {/* ناڤ ونیشان ل سەر بەشی ڤیدیۆیێ (ئەگەر ڤیدیۆ نەبیت یان پێش پلەی بوونێ) */}
+              {!course.videoUrl && (
+                <div className="absolute top-6 left-6 right-16 z-20">
+                  <span 
+                    className="inline-block px-3 py-1 text-xs font-medium rounded-full text-white mb-3"
+                    style={{ background: `linear-gradient(135deg, ${course.gradientFrom}, ${course.gradientTo})` }}
+                  >
+                    {course.category}
+                  </span>
+                  <h2 className="text-2xl lg:text-3xl font-bold text-white drop-shadow-lg">
+                    {course.title}
+                  </h2>
+                </div>
+              )}
             </div>
 
             {/* Course Details */}
             <div className="lg:w-2/5 p-6 lg:p-8 overflow-y-auto bg-card">
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <h2 className="text-2xl font-bold text-card-foreground mb-2 lg:block">
+                {course.title}
+              </h2>
+              <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
                 {course.description}
               </p>
 
@@ -132,14 +134,14 @@ export function VideoModal({ isOpen, onClose, course }: VideoModalProps) {
                     <Calendar className="w-4 h-4" style={{ color: course.gradientFrom }} />
                     <p className="text-xs text-muted-foreground">Days</p>
                   </div>
-                  <p className="font-medium text-card-foreground">{course.days}</p>
+                  <p className="font-medium text-card-foreground text-xs sm:text-sm">{course.days}</p>
                 </div>
                 <div className="p-4 bg-secondary/50 rounded-xl">
                   <div className="flex items-center gap-2 mb-1">
                     <Clock className="w-4 h-4" style={{ color: course.gradientFrom }} />
                     <p className="text-xs text-muted-foreground">Time</p>
                   </div>
-                  <p className="font-medium text-card-foreground">{course.time}</p>
+                  <p className="font-medium text-card-foreground text-xs sm:text-sm">{course.time}</p>
                 </div>
               </div>
 
@@ -149,26 +151,26 @@ export function VideoModal({ isOpen, onClose, course }: VideoModalProps) {
                   <p className="text-xs text-muted-foreground mb-1">Instructor</p>
                   <div className="flex items-center gap-2">
                     <div 
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-medium"
+                      className="w-7 h-7 rounded-full flex items-center justify-center text-white text-[10px] font-medium shrink-0"
                       style={{ background: `linear-gradient(135deg, ${course.gradientFrom}, ${course.gradientTo})` }}
                     >
                       {course.instructor.split(' ').map(n => n[0]).slice(0, 2).join('')}
                     </div>
-                    <p className="font-medium text-card-foreground text-sm">{course.instructor}</p>
+                    <p className="font-medium text-card-foreground text-xs truncate">{course.instructor}</p>
                   </div>
                 </div>
                 <div className="p-4 bg-secondary/50 rounded-xl">
                   <p className="text-xs text-muted-foreground mb-1">Level</p>
-                  <p className="font-medium text-card-foreground">{course.level}</p>
+                  <p className="font-medium text-card-foreground text-xs sm:text-sm">{course.level}</p>
                 </div>
               </div>
 
               {/* What You'll Learn */}
               <div className="mb-6">
-                <h3 className="font-semibold text-card-foreground mb-3">What You&apos;ll Learn</h3>
+                <h3 className="font-semibold text-card-foreground mb-3 text-sm">What You&apos;ll Learn</h3>
                 <ul className="space-y-2">
-                  {learningPoints.map((point, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                  {pointsToShow.map((point, index) => (
+                    <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-muted-foreground">
                       <CheckCircle className="w-4 h-4 mt-0.5 shrink-0" style={{ color: course.gradientFrom }} />
                       <span>{point}</span>
                     </li>
@@ -176,7 +178,6 @@ export function VideoModal({ isOpen, onClose, course }: VideoModalProps) {
                 </ul>
               </div>
 
-              
             </div>
           </motion.div>
         </>

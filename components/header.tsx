@@ -1,4 +1,3 @@
-
 "use client"
 
 import Link from "next/link"
@@ -24,13 +23,15 @@ export function Header() {
           
           {/* --- Logo Section --- */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-20 h-15 overflow-hidden rounded-lg bg-white border border-white/10">
+            {/* قەبارێ ڤێ سندووقێ ڕێکخستی یە دا کو تەواو هاوسەنگ بیت دگەل لۆگۆی */}
+            <div className="relative w-[110px] h-[80px] overflow-hidden rounded-lg bg-white border border-white/10 flex items-center justify-center">
               <Image
                 src="/log.png"
                 alt="Logo"
-                width={120}
-                height={60}
-                className="h-full w-full object-contain p-1"
+                width={90}
+                height={90}
+                className="h-full w-full object-cover"
+                priority
               />
             </div>
             <div className="flex items-center font-bold text-xl tracking-tighter">
@@ -42,20 +43,15 @@ export function Header() {
 
           {/* --- Right Side: Desktop Nav + Mobile Menu --- */}
           <div className="flex items-center gap-4">
-            {/* Desktop Navigation (شاراوەیە لە مۆبایل) */}
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6 mr-4">
-                            <Link href="/register/teacher" className="text-sm text-slate-300 hover:text-emerald-400">Teacher</Link>
-                                                        <Link href="/register/student" className="text-sm text-slate-300 hover:text-emerald-400">Student</Link>
-
-
+              <Link href="/register/teacher" className="text-sm text-slate-300 hover:text-emerald-400">Teacher</Link>
+              <Link href="/register/student" className="text-sm text-slate-300 hover:text-emerald-400">Student</Link>
               <Link href="/about" className="text-sm text-slate-300 hover:text-emerald-400">About</Link>
               <Link href="/contact" className="text-sm text-slate-300 hover:text-emerald-400">Contact</Link>
-
             </nav>
 
-           
-
-            {/* --- Mobile Menu Button (تەنها لە مۆبایل دیارە) --- */}
+            {/* --- Mobile Menu Button --- */}
             <div className="md:hidden">
               <Sheet>
                 <SheetTrigger asChild>
@@ -67,11 +63,8 @@ export function Header() {
                   <nav className="flex flex-col gap-4 mt-10">
                     <Link href="/register/student" className="text-lg font-medium hover:text-emerald-400">Student</Link>
                     <Link href="/register/teacher" className="text-lg font-medium hover:text-emerald-400">Teacher</Link>
-
                     <Link href="/about" className="text-lg font-medium hover:text-emerald-400">About Us</Link>
-                    
                     <Link href="/contact" className="text-lg font-medium hover:text-emerald-400">Contact</Link>
-                    
                   </nav>
                 </SheetContent>
               </Sheet>
